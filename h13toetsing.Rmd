@@ -314,6 +314,17 @@ with( gramm2013,
 De notatie `1.913e-09` moet gelezen worden als het getal
 $(1.913 \times 10^{-9})$.
 
+### JASP
+
+Hier volgen instructies voor JASP. 
+
+De hierboven besproken gegevens zijn te vinden in het bestand `data/grammaticatoets2013.csv`. 
+
+Om onze eerdere hypothese te toetsen, moeten we in JASP eerst de
+observaties selecteren ("filteren") van de studenten Taalwetenschap.
+
+Enzovoort. 
+
 ## Overschrijdingskans $p$ is altijd groter dan nul {#sec:pgroterdannul}
 
 De overschrijdingskans $p$ kan heel klein zijn, maar is altijd groter
