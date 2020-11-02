@@ -305,8 +305,8 @@ Neem bij het overnemen van die uitvoer goede notitie van de waarschuwing in
 
 Onze hierboven besproken hypothese kan worden getoetst met de volgende opdrachten:
 ```{r gramm2013onesample-test}
-gramm2013 <- read.csv( file="data/grammaticatoets2013.csv",header=F)
-dimnames(gramm2013)[[2]] <- c("score","opleiding")
+gramm2013 <- read.csv( file="data/grammaticatoets2013b.csv", header=TRUE)
+# dimnames(gramm2013)[[2]] <- c("score","opleiding")
 with( gramm2013,
       t.test( score[opleiding=="TW"], mu=73, alt="greater" ) )
 ```
@@ -316,14 +316,32 @@ $(1.913 \times 10^{-9})$.
 
 ### JASP
 
-Hier volgen instructies voor JASP. 
-
 De hierboven besproken gegevens zijn te vinden in het bestand `data/grammaticatoets2013.csv`. 
 
 Om onze eerdere hypothese te toetsen, moeten we in JASP eerst de
 observaties selecteren ("filteren") van de studenten Taalwetenschap.
 
-Enzovoort. 
+Ga daarvoor naar het tabblad met data, en klik op het trechtersymbool (filter) in de cel linksboven. Er verschijnt dan een werkblad waar je je selectie kunt specificeren.\
+Klik 1x op de variabele `opleiding` (links), die verspringt dan naar het werkblad. Klik daarna 1x op het symbool `=` (boven), dat verspringt dan naar het werkblad. Plaats de cursor achter het `=` teken op het werkblad, en typ de twee letters `TW` (in hoofdletters en zonder aanhalingstekens). Op het werkblad staat nu het selectiecriterium, `opleiding = TW`.\
+Klik op de tekst `Apply pass-through filter` onder het werkblad om dit filter toe te passen. 
+
+In het tabblad met data zie je nu direct dat de regels van studenten anders dan `TW` grijs gemaakt zijn. Die regels (observaties) worden niet verder gebruikt. 
+
+We kunnen nu onze eerdere hypothese toetsen als volgt:
+```
+T-Tests > Classical > One Sample T-Test...
+```
+
+Selecteer variabele `score` (sleep naar "Variables" paneel).\
+Bij "Tests", vink optie `Student` aan.\
+Geef op tegen welke waarde van $\mu$ getoetst moet worden: geef op als "Test value" de waarde `73`. \
+Geef op dat je eenzijdig wilt toetsen: "Alt.Hypothesis" is `> Test value`.\
+Vink onder het kopje "Assumption checks" ook de optie `Normality` aan (zie §\@ref(sec:isvarnormaalverdeeld)).\
+Vink ook onder het kopje "Additional Statistics" twee opties aan: de optie `Effect size` (zie §\@ref(sec:ttoets-effectgrootte) hieronder), alsmede de optie `Descriptives`. 
+
+In het tabblad Results zie je nu direct de resultaten van
+de *eenzijdige* *t*-toets, plus de resultaten van de Shapiro-Wilk-toets (die toetst of de afhankelijke variabele normaal verdeeld is), plus enige beschrijvende statistiek van de afhankelijke variabele. 
+
 
 ## Overschrijdingskans $p$ is altijd groter dan nul {#sec:pgroterdannul}
 
